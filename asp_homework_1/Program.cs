@@ -25,6 +25,7 @@ namespace asp_homework_1
                 }
                 else if (request.Path == "/api/numbers")
                 {
+                    response.ContentType = "text/plain; charset=utf-8";
                     string query = request.QueryString.ToString();
 
                     string numberOne = request.Query["numberOne"];
@@ -40,11 +41,7 @@ namespace asp_homework_1
                     long.TryParse(numberTwo.Trim(), out var numberTwoLong);
 
                     body.AppendLine($"""
-                        <div class="px-4 py-5 my-5 text-center">
-                        <div class="col-lg-6 mx-auto">
-                        <p class=\"lead mb-4\">{numberOneLong + numberTwoLong}</p>
-                        </div>
-                        </div>
+                        {numberOneLong + numberTwoLong}
                         """);
                 }
                 else if (request.Path == "/api/string-lenght")
